@@ -1,0 +1,148 @@
+html{
+  background-color: #333;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+nav {
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  border: solid black 1px; /* Color de fondo del nav */
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #111;
+} 
+
+.card {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 400px;
+  background-color: black;
+  position: relative;
+  margin: 10px;
+} 
+
+.mediaCarta {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  color: greenyellow;
+  background-color: #333333de;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.nombreCarta {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: rgb(255, 233, 32);
+  background-color: #333333de;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.bandera-card {
+  width: 95px;
+  height: 70px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.atributosBanderaCarta{
+  position: absolute;
+  color: white;
+}
+
+.atributosCarta{
+  position: absolute;
+  bottom: 7px;
+  left: 10px;
+  color: white;
+  background-color: #333333de;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.cartas-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 20px;
+}
+
+.carta {
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 40px;
+  width: 400px; /* Ajusta el ancho según tus necesidades */
+  display: inline-block;
+  margin: 10px;
+}
+
+.borrar-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 5px;
+}
+
+.editar-btn {
+  position: absolute;
+  bottom: 0;
+  right: 80px;
+  margin: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.infoForm{
+  list-style-type: none;
+  border-bottom: 1px solid #ccc; 
+  padding-bottom: 10px; 
+  margin-bottom: 10px;
+}
+
+.paisForm{
+  list-style-type: none;
+  border-bottom: 1px solid #ccc; 
+  padding-bottom: 10px; 
+  margin-bottom: 10px;
+}
+
