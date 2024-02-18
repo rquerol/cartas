@@ -1,13 +1,11 @@
-html{
-  background-color: #333;
-}
-
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100vh;
   margin: 0;
+  background-image: url(../media/dux4xq5v0zs41.jpg);
+  background-size: cover; /* Para ajustar la imagen al tamaño del viewport */
 }
 
 nav {
@@ -110,6 +108,7 @@ nav li a:hover {
   width: 400px; /* Ajusta el ancho según tus necesidades */
   display: inline-block;
   margin: 10px;
+  background-color: #333;
 }
 
 .borrar-btn {
@@ -127,9 +126,11 @@ nav li a:hover {
 }
 
 form {
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color:#333;
 }
 
 .infoForm{
@@ -146,3 +147,7 @@ form {
   margin-bottom: 10px;
 }
 
+.logos{
+  height: 70px;
+  width: 100px;
+}

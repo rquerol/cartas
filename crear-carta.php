@@ -46,6 +46,16 @@
                     <input type="file" name="bandera">
                 </li>
             </div>
+            <label for="competiciones">Competiciones:</label><br>
+            <input type="checkbox" id="competicion1" name="competiciones[]" value="competicion1">
+            <label for="competicion1">
+                <img src="./media/f1-logo.png" class="logos" alt="Competición 1">
+            </label><br>
+
+            <input type="checkbox" id="competicion2" name="competiciones[]" value="competicion2">
+            <label for="competicion2">
+                <img src="./media/f2-logo.png" class="logos" alt="Competición 2">
+            </label><br>
             <div>
                 <ul>
                     <li>
