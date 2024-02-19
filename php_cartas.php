@@ -46,10 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['crear_carta'])) {
 
         // Insertar las competiciones seleccionadas
         if (isset($_POST['competiciones']) && is_array($_POST['competiciones'])) {
-            foreach ($_POST['competiciones'] as $competencia) {
-                // Inserta el ID del piloto y el nombre de la competencia en la tabla piloto_competicio
-                $stmt2 = $conn->prepare("INSERT INTO piloto_competicio(idpiloto) VALUES (:idpiloto)");
+            foreach ($_POST['competiciones'] as $competencia_id) {
+                // Inserta el ID del piloto y el ID de la competencia en la tabla piloto_competicio
+                $stmt2 = $conn->prepare("INSERT INTO piloto_competicio(idpiloto, idcompeticio) VALUES (:idpiloto, :idcompeticio)");
                 $stmt2->bindParam(':idpiloto', $id_piloto);
+                $stmt2->bindParam(':idcompeticio', $competencia_id);
                 $stmt2->execute();
             }
         }

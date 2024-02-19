@@ -47,15 +47,15 @@
                 </li>
             </div>
             <label for="competiciones">Competiciones:</label><br>
-                <input type="checkbox" id="competicio1" name="competicions[]" value="competicio1|./ruta-a-la-imagen1.jpg">
+                <input type="checkbox" id="competicio1" name="competiciones[]" value="1">
                 <label for="competicio1">
                     <img src="./media/f1-logo.png" class="logos" alt="Competicio 1">
                 </label><br>
 
-                <input type="checkbox" id="competicio2" name="competicions[]" value="competicio2|./ruta-a-la-imagen2.jpg">
+                <input type="checkbox" id="competicio2" name="competiciones[]" value="2">
                 <label for="competicio2">
                     <img src="./media/f2-logo.png" class="logos" alt="Competicio 2">
-            </label><br>
+                </label><br>
             <div>
                 <ul>
                     <li>

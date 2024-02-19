@@ -68,6 +68,7 @@ $conn = null;
                 if (!empty($carta['bandera'])) {
                     echo "<img src='{$carta['bandera']}' class='bandera-card' alt='Bandera del Piloto'>";
                 }
+                
                 // Verifica si el promedio está definido
                 echo "<div class='atributosCarta'>";
                 if (!empty($carta['exp'])) {
