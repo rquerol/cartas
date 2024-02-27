@@ -55,7 +55,7 @@
                 <input type="checkbox" id="competicio2" name="competiciones[]" value="2">
                 <label for="competicio2">
                     <img src="./media/f2-logo.png" class="logos" alt="Competicio 2">
-                </label><br>
+            </label><br>
             <div>
                 <ul>
                     <li>

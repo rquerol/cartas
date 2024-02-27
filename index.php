@@ -3,9 +3,12 @@ require_once 'config.php'; // Incluye el archivo de configuración de la base de
 
 // Obtén todas las cartas de la base de datos con información sobre el país del piloto
 try {
-    $stmt = $conn->query("SELECT piloto.*, pais.bandera, pais.nombre AS nombre_pais FROM piloto
-                        JOIN pais ON piloto.idpais = pais.idpais");
-    $cartas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $conn->query("SELECT piloto.*, pais.bandera, pais.nombre AS nombre_pais, competicio.imagen_competencia
+                    FROM piloto
+                    JOIN pais ON piloto.idpais = pais.idpais
+                    JOIN piloto_competicio ON piloto.idpiloto = piloto_competicio.idpiloto
+                    JOIN competicio ON piloto_competicio.idcompeticio = competicio.idcompeticio");
+$cartas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
@@ -68,7 +71,9 @@ $conn = null;
                 if (!empty($carta['bandera'])) {
                     echo "<img src='{$carta['bandera']}' class='bandera-card' alt='Bandera del Piloto'>";
                 }
-                
+                if (!empty($carta['imagen_competencia'])) {
+                    echo "<img src='{$carta['imagen_competencia']}' class='competencia-img' alt='Imagen de la Competición'>";
+                }
                 // Verifica si el promedio está definido
                 echo "<div class='atributosCarta'>";
                 if (!empty($carta['exp'])) {

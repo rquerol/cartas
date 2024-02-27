@@ -45,15 +45,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['crear_carta'])) {
         $id_piloto = $conn->lastInsertId();
 
         // Insertar las competiciones seleccionadas
-        if (isset($_POST['competiciones']) && is_array($_POST['competiciones'])) {
-            foreach ($_POST['competiciones'] as $competencia_id) {
-                // Inserta el ID del piloto y el ID de la competencia en la tabla piloto_competicio
-                $stmt2 = $conn->prepare("INSERT INTO piloto_competicio(idpiloto, idcompeticio) VALUES (:idpiloto, :idcompeticio)");
-                $stmt2->bindParam(':idpiloto', $id_piloto);
-                $stmt2->bindParam(':idcompeticio', $competencia_id);
-                $stmt2->execute();
+        if (isset($_POST['competicio']) && is_array($_POST['competicio'])) {
+            foreach ($_POST['competicio'] as $competicio_id) {
+                // Verificar la existencia de la competición
+                $stmt_check = $conn->prepare("SELECT COUNT(*) AS count FROM competicio WHERE idcompeticio = :idcompeticio");
+                $stmt_check->bindParam(':idcompeticio', $competicio_id);
+                $stmt_check->execute();
+                $competencia_count = $stmt_check->fetchColumn();
+
+                if ($competencia_count > 0) {
+                    // Insertar el ID del piloto y el ID de la competencia en la tabla piloto_competicio
+                    $stmt2 = $conn->prepare("INSERT INTO piloto_competicio(idpiloto, idcompeticio) VALUES (:idpiloto, :idcompeticio)");
+                    $stmt2->bindParam(':idpiloto', $id_piloto);
+                    $stmt2->bindParam(':idcompeticio', $competicio_id);
+                    $stmt2->execute();
+                } else {
+                    // La competición con el ID dado no existe, manejar el error apropiadamente
+                    echo "La competición con el ID $competicio_id no existe. No se pudo asociar al piloto.<br>";
+                }
             }
         }
+
 
         $conn = null;
 
