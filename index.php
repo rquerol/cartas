@@ -71,8 +71,8 @@ $conn = null;
                 if (!empty($carta['bandera'])) {
                     echo "<img src='{$carta['bandera']}' class='bandera-card' alt='Bandera del Piloto'>";
                 }
-                if (!empty($carta['imagen_competencia'])) {
-                    echo "<img src='{$carta['imagen_competencia']}' class='competencia-img' alt='Imagen de la Competición'>";
+                if (!empty($carta['imagen_competicio'])) {
+                    echo "<img src='{$carta['imagen_competicio']}' class='competicio-img' alt='Imagen de la Competición'>";
                 }
                 // Verifica si el promedio está definido
                 echo "<div class='atributosCarta'>";
