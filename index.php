@@ -1,20 +1,15 @@
 <?php
-require_once 'config.php'; // Incluye el archivo de configuración de la base de datos
+require_once 'config.php';
 
-// Obtén todas las cartas de la base de datos con información sobre el país del piloto
 try {
-    $stmt = $conn->query("SELECT piloto.*, pais.bandera, pais.nombre AS nombre_pais, competicio.imagen_competencia
+    $stmt = $conn->query("SELECT piloto.*, pais.bandera, pais.nombre AS nombre_pais
                     FROM piloto
-                    JOIN pais ON piloto.idpais = pais.idpais
-                    JOIN piloto_competicio ON piloto.idpiloto = piloto_competicio.idpiloto
-                    JOIN competicio ON piloto_competicio.idcompeticio = competicio.idcompeticio");
-$cartas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    JOIN pais ON piloto.idpais = pais.idpais");
+    $cartas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
 
-
-// Borrar carta si se ha enviado una solicitud de borrado
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['borrar_carta'])) {
     $cartaId = $_POST['carta_id'];
 
@@ -27,10 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['borrar_carta'])) {
     }
 }
 
-// Cerrar la conexión a la base de datos
-$conn = null;
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -56,7 +48,6 @@ $conn = null;
             foreach ($cartas as $carta) {
                 echo "<div class='card text-bg-dark'>";
                 
-                // Verifica si el nombre está definido
                 if (!empty($carta['name'])) {
                     echo "<h5 class='nombreCarta'>{$carta['name']}</h5>";
                 }
@@ -71,10 +62,7 @@ $conn = null;
                 if (!empty($carta['bandera'])) {
                     echo "<img src='{$carta['bandera']}' class='bandera-card' alt='Bandera del Piloto'>";
                 }
-                if (!empty($carta['imagen_competicio'])) {
-                    echo "<img src='{$carta['imagen_competicio']}' class='competicio-img' alt='Imagen de la Competición'>";
-                }
-                // Verifica si el promedio está definido
+
                 echo "<div class='atributosCarta'>";
                 if (!empty($carta['exp'])) {
                     echo "<h5 class='expCarta'>Exp: {$carta['exp']}</h5>";
@@ -92,22 +80,14 @@ $conn = null;
 
                 echo "<div class='card-img-overlay'>";
                 echo "<div class='stats'>";
-
-                 // Botón de edición
                 echo "<a href='editar-carta.php?id={$carta['idpiloto']}' class='btn btn-primary editar-btn'>Editar</a>";
-
-                
-                // Botón para borrar la carta
                 echo "<form method='POST' action='index.php'>";
                 echo "<input type='hidden' name='carta_id' value='{$carta['idpiloto']}'>";
                 echo "<button type='submit' name='borrar_carta' class='btn btn-danger borrar-btn'>Borrar</button>";
                 echo "</form>";
-
-                // Puedes mostrar más información aquí según sea necesario
                 echo "</div>";
                 echo "</div>";
 
-                // Verifica si la imagen está definida
                 if (!empty($carta['photo'])) {
                     echo "<img src='{$carta['photo']}' class='card-img' alt='Imagen del Piloto'>";
                 }

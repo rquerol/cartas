@@ -1,20 +1,15 @@
 <?php
-// Conexión a la base de datos y recuperación de la carta
 require_once 'config.php';
 
-// Verificar si se proporciona un ID de carta
 if(isset($_GET['id'])) {
     $cartaId = $_GET['id'];
 
-    // Recuperar la información de la carta desde la base de datos
     $stmt = $conn->prepare("SELECT * FROM piloto WHERE idpiloto = :cartaId");
     $stmt->bindParam(':cartaId', $cartaId);
     $stmt->execute();
     $carta = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Verificar si se envió el formulario para guardar la edición
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['guardar_edicion'])) {
-        // Recopilar los datos del formulario
         $nombre = $_POST['nombre'];
         $media = $_POST['media'];
         $exp = $_POST['exp'];
@@ -22,7 +17,6 @@ if(isset($_GET['id'])) {
         $awa = $_POST['awa'];
         $pac = $_POST['pac'];
 
-        // Actualizar la información en la base de datos
         try {
             $stmt = $conn->prepare("UPDATE piloto SET name = :nombre, media = :media, exp = :exp, rac = :rac, awa = :awa, pac = :pac WHERE idpiloto = :cartaId");
             $stmt->bindParam(':nombre', $nombre);
@@ -34,7 +28,6 @@ if(isset($_GET['id'])) {
             $stmt->bindParam(':cartaId', $cartaId);
             $stmt->execute();
 
-            // Redirigir a la página principal después de guardar los cambios
             header('Location: index.php');
             exit();
         } catch (PDOException $e) {
@@ -42,7 +35,6 @@ if(isset($_GET['id'])) {
         }
     }
 } else {
-    // Manejar el caso en que no se proporciona el ID de la carta
     echo "No se proporcionó un ID de carta válido.";
 }
 ?>

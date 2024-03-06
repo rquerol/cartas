@@ -5,7 +5,7 @@ body {
   height: 100vh;
   margin: 0;
   background-image: url(../media/dux4xq5v0zs41.jpg);
-  background-size: cover; /* Para ajustar la imagen al tamaño del viewport */
+  background-size: cover;
 }
 
 nav {
@@ -13,7 +13,7 @@ nav {
   width: 100%;
   padding: 10px;
   background-color: #333;
-  border: solid black 1px; /* Color de fondo del nav */
+  border: solid black 1px;
 }
 
 nav ul {
@@ -105,7 +105,7 @@ nav li a:hover {
   border: 1px solid black;
   border-radius: 15px;
   padding: 40px;
-  width: 400px; /* Ajusta el ancho según tus necesidades */
+  width: 400px;
   display: inline-block;
   margin: 10px;
   background-color: #333;
@@ -150,4 +150,82 @@ form {
 .logos{
   height: 70px;
   width: 100px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-image: url(../media/dux4xq5v0zs41.jpg);
+  background-size: cover; 
+}
+
+nav {
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  background-color: #333;
+  border: solid black 1px; 
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+nav li {
+  float: left;
+}
+
+nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav li a:hover {
+  background-color: #111;
+} 
+
+.carta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-top: 50px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #333;
+  color: white;
+}
+
+.carta label {
+  margin-bottom: 10px;
+}
+
+.carta input[type="text"] {
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.carta input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+.carta input[type="submit"]:hover {
+  background-color: #0056b3;
 }
